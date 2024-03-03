@@ -9,13 +9,24 @@ const recipeJSON =
 
 let data;
 
-
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-    res.render("index.ejs");
-})
+    res.render("index.ejs", { recipe: data });
+});
+
+app.post("/recipe", (req, res) => {
+    let choice = req.body["choice"];
+    if (choice === "chicken") {
+        data = JSON.parse(recipeJSON)[0];
+    } else if (choice === "beef") {
+        data = JSON.parse(recipeJSON)[1];
+    } else if (choice === "fish") {
+        data = JSON.parse(recipeJSON)[2];
+    }
+    res.redirect("/");
+});
 
 app.listen(port, () => {
     console.log(`Listening in port ${port}`);

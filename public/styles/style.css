@@ -37,12 +37,31 @@ h1 {
 }
 
 .recipe-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: white;
-    height: auto;
     margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-left: 40px;
     margin-right: 40px;
+}
+
+.ingredients-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.ingredients-list li {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.choice {
+    font-size: 30px;
+}
+
+h3 {
+    color: black;
+    font-weight: bold;
 }

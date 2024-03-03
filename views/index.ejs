@@ -12,13 +12,30 @@
     <h1>Taco Town 🌮</h1>
 
     <form action="/recipe" method="POST" class="buttons-container">
-        <button value="chicken" type="submit" class="choice-button">🍗</button>
-        <button value="beef" type="submit" class="choice-button">🥩</button>
-        <button value="fish" type="submit" class="choice-button">🐟</button>
+        <button name="choice" value="chicken" type="submit" class="choice-button">🍗</button>
+        <button name="choice" value="beef" type="submit" class="choice-button">🥩</button>
+        <button name="choice" value="fish" type="submit" class="choice-button">🐟</button>
     </form>
 
     <div class="recipe-container">
         <% if(locals.recipe) { %>
+            <h1 class="choice">
+                <%= recipe.name %>
+            </h1>
+            <h3>Ingredients:</h3>
+            <ul class="ingredients-list">
+                <li>
+                    <%= recipe.ingredients.protein.name %>, <%= recipe.ingredients.protein.preparation %>
+                </li>
+                <li>
+                    <%=recipe.ingredients.salsa.name %>
+                </li>
+                <% recipe.ingredients.toppings.forEach(topping=> { %>
+                    <li>
+                        <%= topping.quantity %> of <%= topping.name %>
+                    </li>
+                    <% }) %>
+            </ul>
             <% } else { %>
                 <h2>Pick your favourite taco ingredient 👆</h2>
                 <% } %>
